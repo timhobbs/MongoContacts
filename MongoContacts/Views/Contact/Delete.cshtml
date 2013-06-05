@@ -1,0 +1,44 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Delete</h2>
+
+<div id="contact-detail">
+    <div id="contact-photo" class="contact-column">
+        <img src="@Model.ImageUrl" alt="@Model.FullName" />
+    </div>
+    <div id="contact-name" class="contact-column">
+        <p>
+            <strong>First Name</strong>
+            @Model.FirstName
+        </p>
+        <p>
+            <strong>Last Name</strong>
+            @Model.LastName
+        </p>
+        @if (!String.IsNullOrEmpty(Model.Hometown)) { 
+            <p>
+                <strong>Hometown</strong><br />
+                @Model.Hometown
+            </p>
+        }
+        @if (Model.Birthday.HasValue) { 
+            <p>
+                <strong>Birthday</strong><br />
+                @Model.Birthday.Value.ToShortDateString()
+            </p>
+        }
+    </div>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(model => model.Id)
+    <button class="btn btn-danger delete-button">
+        <i class="icon icon-trash icon-white"></i>
+        Delete
+    </button>
+}

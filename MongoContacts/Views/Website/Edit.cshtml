@@ -1,0 +1,21 @@
+﻿@model WebsiteModel
+
+@{
+    ViewBag.Title = "Edit Website";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Edit Website</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage)) {
+    <div class="alert alert-error">
+        @Html.Raw(ViewBag.ErrorMessage.Replace("\r\n", "<br />"))
+    </div>
+}
+
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ContactId)
+    @Html.EditorForModel()
+    <button class="btn btn-primary">Update Website</button>
+}

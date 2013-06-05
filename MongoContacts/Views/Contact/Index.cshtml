@@ -1,0 +1,50 @@
+﻿@model IList<ContactModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@if (ViewBag.FilterMode != null && ViewBag.FilterMode == false) {
+    <div id="contact-filter">
+        @using (Html.BeginForm("Search", "Contact", FormMethod.Get, new { @class = "form-search" })) {
+            <input type="text" class="input-medium search-query" name="q" />
+            <button type="submit" class="btn">Search</button>
+        }
+    </div>
+}
+<hr>
+
+<div id="contact-list">
+@if (Model.Count > 0) {
+    <div class="row-fluid">
+        @{
+            int i = 0;
+        }
+        @foreach (var contact in Model) {
+            if (i % 3 == 0 && i > 0) {
+                i = 0;
+                @Html.Raw("    </div>\r\n")
+                @Html.Raw("    <hr />\r\n")
+                @Html.Raw("    <div class=\"row-fluid\">\r\n")
+            } else {
+                i++;
+            }
+        <div class="span4">
+            <div class="contact-column">
+                @if (!String.IsNullOrEmpty(contact.ImageUrl)) {
+                    <a href="@Url.Action("Details", "Contact", new { id = @contact.Id })">
+                        <img src="@contact.ImageUrl" alt="@contact.FullName" width="50" />
+                    </a>
+                }
+            </div>
+            <div class="contact-column">
+                <a href="@Url.Action("Details", "Contact", new { id = @contact.Id })">@contact.FullName</a>
+            </div>
+        </div>
+        }
+    </div>
+}
+</div>
+
+<p><a href="@Url.Action("Create", "Contact")">Add Contact</a></p>

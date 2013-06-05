@@ -1,0 +1,82 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div id="contact-detail">
+    <div id="contact-photo" class="contact-column">
+        <img src="@Model.ImageUrl" alt="@Model.FullName" />
+    </div>
+    <div id="contact-name" class="contact-column">
+        <p>
+            <strong>First Name</strong><br />
+            @Model.FirstName
+        </p>
+        <p>
+            <strong>Last Name</strong><br />
+            @Model.LastName
+        </p>
+        @if (!String.IsNullOrEmpty(Model.Hometown)) { 
+            <p>
+                <strong>Hometown</strong><br />
+                @Model.Hometown
+            </p>
+        }
+        @if (Model.Birthday.HasValue) { 
+            <p>
+                <strong>Birthday</strong><br />
+                @Model.Birthday.Value.ToShortDateString()
+            </p>
+        }
+        <p>
+            <a href="@Url.Action("Edit", "Contact", new { id = @Model.Id })" title="Edit">
+                <i class="icon icon-edit"></i>
+            </a>
+            <a href="@Url.Action("Delete", "Contact", new { id = @Model.Id })" title="Delete">
+                <i class="icon icon-trash"></i>
+            </a>
+        </p>    </div>
+    <div id="contact-lists" class="contact-column">
+        <p>
+            <strong>Email Addreses</strong>
+            <a href="@Url.Action("Index", "Email", new { id = @Model.Id })" title="Mange Email">
+                <i class="icon icon-edit"></i>
+            </a>
+        </p>
+        @if (Model.EmailAddresses.Count > 0) { 
+            <ul>
+                @foreach (var email in Model.EmailAddresses) {
+                    <li>
+                        <em class="muted">@email.Name</em><br />
+                        <span class="primary-item">
+                            <a href="mailto:@email.EmailAddress">@email.EmailAddress</a>
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+        <hr />
+        <p>
+            <strong>Websites</strong>
+            <a href="@Url.Action("Index", "Website", new { id = @Model.Id })" title="Mange Websites">
+                <i class="icon icon-edit"></i>
+            </a>
+        </p>
+        @if (Model.Websites.Count > 0) { 
+            <ul>
+                @foreach (var site in Model.Websites) {
+                    <li>
+                        <span class="primary-item">
+                            <a href="@site.Url" target="_blank">@site.Url</a>
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+        <hr />
+    </div>
+</div>

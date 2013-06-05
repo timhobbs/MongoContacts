@@ -1,0 +1,34 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "Websites";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Websites</h2>
+
+<p><a href="@Url.Action("Details", "Contact", new { id = @Model.Id })">@Model.FullName</a></p>
+
+@if (Model.Websites.Count > 0) {
+    <ul id="contact-item">
+        @foreach (var site in Model.Websites) {
+            <li>
+                <span class="contact-column">
+                    <strong>@site.Url</strong>
+                </span>
+                <span class="contact-column">
+                    <a href="@Url.Action("Edit", "Website", new { id = @site.Id, contactId = @Model.Id })" class="btn btn-mini">Edit</a>
+                    <a href="@Url.Action("Delete", "Website", new { ContactId = @Model.Id, Id = @site.Id })" class="btn btn-danger btn-mini delete-button">Delete</a>
+                </span>
+            </li>
+        }
+    </ul>
+} else { 
+    <p class="alert alert-info">
+        No websites found.
+    </p>
+}
+
+<p>
+    <a href="@Url.Action("Create", "Website", new { contactId = @Model.Id })">Add Website</a>
+</p>

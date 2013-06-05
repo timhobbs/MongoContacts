@@ -1,0 +1,35 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "Email";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Email</h2>
+
+<p><a href="@Url.Action("Details", "Contact", new { id = @Model.Id })">@Model.FullName</a></p>
+
+@if (Model.EmailAddresses.Count > 0) {
+    <ul id="contact-item">
+        @foreach (var email in Model.EmailAddresses) {
+            <li>
+                <span class="contact-column">
+                    <em>@email.Name</em><br />
+                    <strong>@email.EmailAddress</strong>
+                </span>
+                <span class="contact-column">
+                    <a href="@Url.Action("Edit", "Email", new { id = @email.Id, contactId = @Model.Id })" class="btn btn-mini">Edit</a>
+                    <a href="@Url.Action("Delete", "Email", new { ContactId = @Model.Id, Id = @email.Id })" class="btn btn-danger btn-mini delete-button">Delete</a>
+                </span>
+            </li>
+        }
+    </ul>
+} else { 
+    <p class="alert alert-info">
+        No email addresses found.
+    </p>
+}
+
+<p>
+    <a href="@Url.Action("Create", "Email", new { contactId = @Model.Id })">Add Email</a>
+</p>

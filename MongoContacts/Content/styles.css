@@ -1,0 +1,49 @@
+﻿body {
+}
+
+.contact-column {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+#contact-detail .contact-column {
+    padding: 0 40px 0 0;
+}
+
+#contact-item, #contact-item li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#contact-item .contact-column {
+    padding-left: 0;
+}
+
+#contact-item .contact-column {
+    padding-bottom: 20px;
+    vertical-align: bottom;
+}
+
+#contact-item li .contact-column:first-of-type {
+    min-width: 400px;
+}
+
+#contact-list, #contact-detail, #contact-item {
+    margin-bottom: 20px;
+}
+
+#contact-list li {
+    margin-bottom: 20px;
+}
+
+#contact-detail:before,
+#contact-detail:after {
+    content: " ";
+    display: table;
+}
+
+#contact-detail:after {
+    clear: both;
+}

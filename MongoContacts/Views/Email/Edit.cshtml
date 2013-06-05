@@ -1,0 +1,21 @@
+﻿@model EmailModel
+
+@{
+    ViewBag.Title = "Edit Email";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Edit Email</h2>
+
+@if (!String.IsNullOrEmpty(ViewBag.ErrorMessage)) {
+    <div class="alert alert-error">
+        @Html.Raw(ViewBag.ErrorMessage.Replace("\r\n", "<br />"))
+    </div>
+}
+
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(model => model.ContactId)
+    @Html.HiddenFor(model => model.Id)
+    @Html.EditorForModel()
+    <button class="btn btn-primary">Update Email</button>
+}

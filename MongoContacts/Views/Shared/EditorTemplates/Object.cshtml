@@ -11,7 +11,7 @@
     foreach (var prop in props) {
         if (prop.HideSurroundingHtml) {
             @Html.Display(prop.PropertyName)
-        } else if (prop.TemplateHint == null) {
+        } else if (prop.TemplateHint == null && prop.IsComplexType == false) {
             <div class="control-group">
                 @Html.Label(prop.PropertyName, new { @class = "control-label" })
                  <div class="controls">

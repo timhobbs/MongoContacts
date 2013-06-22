@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
+﻿using System.Configuration;
 using MongoDB.Driver;
 
 namespace MongoContacts.DataAccess {
+
     public class MongoHelper<T> where T : class {
 
         public MongoCollection<T> Collection { get; private set; }

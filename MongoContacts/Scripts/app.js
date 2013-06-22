@@ -1,4 +1,13 @@
-﻿$(".delete-button").on("click", function (e) {
+﻿$.validator.setDefaults({
+    highlight: function (element) {
+        $(element).closest(".control-group").addClass("error");
+    },
+    unhighlight: function (element) {
+        $(element).closest(".control-group").removeClass("error");
+    }
+});
+
+$(".delete-button").on("click", function (e) {
     if (confirm("Are you sure? You cannot undo...") == false) {
         e.preventDefault();
     }

@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    Mongo Contacts was created as a way to dip my toe into using Mongo. I knew of it for quite some time
+    but I never had a project to put it to use, so I decided to just create some demo code.
+</p>
+<p>
+    The code base is not particularly useful - everything it can do is already done on your standard cell
+    phone. With a billion or so cell phones out there it is a safe bet that anyone with the knowledge to
+    put the code to use (or even the interest) probably already has a cell phone and would not need anything
+    like this. It was, however, something slightly different and a domain that most would be quite familiar
+    with, so I figured it woule be easy to understand. It is also pretty simple, yet slightly more complex
+    than a lot of starter samples or "hello world" type code samples.
+</p>
+
+<h3>About The Code</h3>
+
+<p>
+    I wanted to keep things simple, but I also wanted it to be somewhat pretty, so Twitter Bootstrap was
+    the natural choice to make it look decent. For the simplicity part I started out with jQuery and tried
+    not to add to much in the way of plugins.
+</p>
+<p>
+    Anoteher shortcut I took for simplicities sake was to put all of the code into the web project. If this
+    were meant to be an example of best practices I'd have split code out into class libraries. There is also
+    quite a bit of "boilerplate" behavior that could probably be refactored into some sort of generic base
+    code, but like I said, this is meant to be a simple example. Please don't use this as anything other
+    than a tool to learn how to use MongoDB and C# - and even then, it probably isn't the best example.
+</p>
+
+<h3>Shortcuts</h3>
+<p>
+    In an effort to make this quick and easy, I used <code>EditorForModel</code>. This saved me lots of time
+    creating views for editing, but it also meant the styling did not quite line up with the Bootstrap classes.
+    As a work-around, I created an <code>Object</code> editor template. <code>EditorForModel</code> makes use of this, so I
+    was able to follow 
+    <a href="http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html">Brad Wilson's 
+    blog series on MVC templates</a> to modify the template to include Bootstrap styling, though in all honesty
+    it really wasn't necessary.
+</p>
+<p>
+    Another shortcut was validation - I used it, but I did not worry about displaying messages. Also, to enable
+    the Bootstrap styling for errors, I used a little js shim rather than creating some type of server-side code
+    or template that would output the HTML properly. I found it on Stack Overflow somewhere and it works quite well,
+    though if I were to do this the "right way"&trade; I would do it differently, but that is just me.
+</p>
+
+<h3>Now What?</h3>
+<p>
+    If you are reading this, you are probably already on the AppHarbor site. If not, there is a demo running up
+    on AppHarbor: <a href="http://mongocontacts.apphb.com">http://mongocontacts.apphb.com</a>. Check it out to
+    get an idea what the app can do.
+</p>
+<p>
+    If you find the app interesting, or if you just want to see how terrible the code is, you can fork it on
+    <a href="https://github.com/timhobbs/MongoContacts">Github</a>.
+</p>

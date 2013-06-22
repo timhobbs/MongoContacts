@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - Mongo Contacts</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
@@ -16,7 +16,8 @@
     <div class="container-fluid">
         <div class="masthead">
             <ul class="nav nav-pills pull-right">
-                <li class="active"><a href="/Contact">Home</a></li>
+                <li @CheckActive("/contact")><a href="/Contact">Home</a></li>
+                <li @CheckActive("/about")><a href="/About">About</a></li>
             </ul>
             <h3 class="muted">Mongo Contacts</h3>
         </div>
@@ -25,6 +26,8 @@
         </div>
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
     <script src="~/Scripts/app.js"></script>
@@ -33,3 +36,9 @@
     }
 </body>
 </html>
+
+@helper CheckActive(string path) {
+    if (Request.Path.Equals(path, StringComparison.InvariantCultureIgnoreCase)) {
+        @: class="active"
+    }
+}

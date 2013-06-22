@@ -12,7 +12,7 @@ namespace MongoContacts.Domain {
 
         public string ImageUrl { get; set; }
 
-        public IList<Phone> PhoneNumbers { get; set; }
+        public IList<PhoneNumber> PhoneNumbers { get; set; }
 
         public IList<Email> EmailAddresses { get; set; }
 

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AutoMapper;
 using MongoContacts.Domain;
 using MongoContacts.Models;
-using AutoMapper;
 
 namespace MongoContacts.Helpers {
+
     public static class AutoMapperExtensions {
 
         public static ContactModel ToModel(this Contact contact) {
@@ -41,12 +38,12 @@ namespace MongoContacts.Helpers {
             return Mapper.Map<InstantMessengerModel, InstantMessenger>(contactModel);
         }
 
-        public static PhoneModel ToModel(this Phone contact) {
-            return Mapper.Map<Phone, PhoneModel>(contact);
+        public static PhoneNumberModel ToModel(this PhoneNumber contact) {
+            return Mapper.Map<PhoneNumber, PhoneNumberModel>(contact);
         }
 
-        public static Phone ToEntity(this PhoneModel contactModel) {
-            return Mapper.Map<PhoneModel, Phone>(contactModel);
+        public static PhoneNumber ToEntity(this PhoneNumberModel contactModel) {
+            return Mapper.Map<PhoneNumberModel, PhoneNumber>(contactModel);
         }
 
         public static WebsiteModel ToModel(this Website contact) {

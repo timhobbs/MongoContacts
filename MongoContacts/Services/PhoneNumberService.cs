@@ -9,57 +9,57 @@ using MongoDB.Driver.Linq;
 
 namespace MongoContacts.Services {
 
-    public class WebsiteService {
+    public class PhoneNumberService {
         private readonly MongoHelper<Contact> contacts;
 
-        public WebsiteService() {
+        public PhoneNumberService() {
             contacts = new MongoHelper<Contact>();
         }
 
-        public IList<Website> GetContactWebsites(ObjectId contactId) {
-            var emails = contacts.Collection.AsQueryable<Contact>()
+        public IList<PhoneNumber> GetContactPhoneNumbers(ObjectId contactId) {
+            var phoneNumbers = contacts.Collection.AsQueryable<Contact>()
                 .Where(c => c.Id == contactId)
-                .FirstOrDefault().Websites;
-            return emails;
+                .FirstOrDefault().PhoneNumbers;
+            return phoneNumbers;
         }
 
-        public Website GetContactWebsite(ObjectId contactId, ObjectId websiteId) {
-            var websites = contacts.Collection.AsQueryable<Contact>()
+        public PhoneNumber GetContactPhoneNumber(ObjectId contactId, ObjectId phoneNumberId) {
+            var phoneNumbers = contacts.Collection.AsQueryable<Contact>()
                 .Where(c => c.Id == contactId)
-                .FirstOrDefault().Websites;
-            var website = websites.Where(w => w.Id == websiteId).FirstOrDefault();
+                .FirstOrDefault().PhoneNumbers;
+            var phoneNumber = phoneNumbers.Where(e => e.Id == phoneNumberId).FirstOrDefault();
 
-            return website;
+            return phoneNumber;
         }
 
-        public void AddWebsite(ObjectId contactId, Website website) {
-            website.Id = ObjectId.GenerateNewId();
+        public void AddPhoneNumber(ObjectId contactId, PhoneNumber phoneNumber) {
+            phoneNumber.Id = ObjectId.GenerateNewId();
             var query = Query<Contact>.EQ(c => c.Id, contactId);
-            var update = Update<Contact>.Push(c => c.Websites, website);
+            var update = Update<Contact>.Push(c => c.PhoneNumbers, phoneNumber);
             var result = contacts.Collection.Update(query, update, UpdateFlags.None, WriteConcern.Acknowledged);
             if (result.Ok == false) {
                 throw new MongoException("Unable to insert object");
             }
         }
 
-        public void UpdateContactWebsite(ObjectId contactId, Website website) {
+        public void UpdateContactPhoneNumber(ObjectId contactId, PhoneNumber phoneNumber) {
             var query = Query<Contact>.EQ(c => c.Id, contactId);
             var contact = contacts.Collection.AsQueryable<Contact>().Where(c => c.Id == contactId).First();
-            var originalWebsite = contact.Websites.Where(w => w.Id == website.Id).First();
-            var index = contact.Websites.IndexOf(originalWebsite);
-            var update = Update<Contact>.Set(c => c.Websites[index], website);
+            var originalPhoneNumber = contact.PhoneNumbers.Where(w => w.Id == phoneNumber.Id).First();
+            var index = contact.PhoneNumbers.IndexOf(originalPhoneNumber);
+            var update = Update<Contact>.Set(c => c.PhoneNumbers[index], phoneNumber);
             var result = contacts.Collection.Update(query, update, UpdateFlags.None, WriteConcern.Acknowledged);
             if (result.DocumentsAffected == 0) {
                 throw new MongoException("Unable to update object");
             }
         }
 
-        public void RemoveContactWebsite(ObjectId contactId, ObjectId websiteId) {
+        public void RemoveContactPhoneNumber(ObjectId contactId, ObjectId phoneNumberId) {
             var query = Query<Contact>.EQ(c => c.Id, contactId);
             var contact = contacts.Collection.AsQueryable<Contact>().Where(c => c.Id == contactId).First();
-            var email = GetContactWebsite(contactId, websiteId);
-            var index = contact.Websites.IndexOf(email);
-            var update = Update<Contact>.Pull(c => c.Websites, email);
+            var phoneNumber = GetContactPhoneNumber(contactId, phoneNumberId);
+            var index = contact.PhoneNumbers.IndexOf(phoneNumber);
+            var update = Update<Contact>.Pull(c => c.PhoneNumbers, phoneNumber);
             var result = contacts.Collection.Update(query, update, UpdateFlags.None, WriteConcern.Acknowledged);
             if (result.DocumentsAffected == 0) {
                 throw new MongoException("Unable to update object");

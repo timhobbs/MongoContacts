@@ -2,12 +2,12 @@
 
 namespace MongoContacts.Models {
 
-    public class InstantMessengerModel : MongoListModel {
+    public class PhoneNumberModel : MongoListModel {
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public string ImAccount { get; set; }
+        public string Number { get; set; }
     }
 }

@@ -16,7 +16,7 @@ $("input[type='datetime']").datepicker({
     format: 'mm/dd/yyyy'
 });
 
-$("#contact-email .delete-button").on("click", function (e) {
+$("#contact-item .delete-button").on("click", function (e) {
     e.preventDefault();
     $.post($(this).attr("href"), function (data) {
         console.log("data", data)

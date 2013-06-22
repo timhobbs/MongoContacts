@@ -7,7 +7,7 @@ namespace MongoContacts.Models {
     public class ContactModel : MongoModel {
 
         public ContactModel() {
-            PhoneNumbers = new List<PhoneModel>();
+            PhoneNumbers = new List<PhoneNumberModel>();
             EmailAddresses = new List<EmailModel>();
             InstantMessengers = new List<InstantMessengerModel>();
             Websites = new List<WebsiteModel>();
@@ -21,7 +21,7 @@ namespace MongoContacts.Models {
 
         public string ImageUrl { get; set; }
 
-        public IList<PhoneModel> PhoneNumbers { get; set; }
+        public IList<PhoneNumberModel> PhoneNumbers { get; set; }
 
         public IList<EmailModel> EmailAddresses { get; set; }
 

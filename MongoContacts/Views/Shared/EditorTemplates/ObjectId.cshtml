@@ -1,2 +1,2 @@
 ﻿@model MongoDB.Bson.ObjectId
-<input type="hidden" value="@Model.ToString()" />
+<input type="hidden" id="@ViewData.ModelMetadata.PropertyName" name="@ViewData.ModelMetadata.PropertyName" value="@Model.ToString()" />

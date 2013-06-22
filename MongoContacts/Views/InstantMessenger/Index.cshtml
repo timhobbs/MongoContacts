@@ -1,0 +1,35 @@
+﻿@model ContactModel
+
+@{
+    ViewBag.Title = "Instant Messenger";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p><a href="@Url.Action("Details", "Contact", new { id = @Model.Id })">@Model.FullName</a></p>
+
+@if (Model.InstantMessengers.Count > 0) {
+    <ul id="contact-item">
+        @foreach (var im in Model.InstantMessengers) {
+            <li>
+                <span class="contact-column">
+                    <em>@im.Name</em><br />
+                    <strong>@im.ImAccount</strong>
+                </span>
+                <span class="contact-column">
+                    <a href="@Url.Action("Edit", "InstantMessenger", new { id = @im.Id, contactId = @Model.Id })" class="btn btn-mini">Edit</a>
+                    <a href="@Url.Action("Delete", "InstantMessenger", new { ContactId = @Model.Id, Id = @im.Id })" class="btn btn-danger btn-mini delete-button">Delete</a>
+                </span>
+            </li>
+        }
+    </ul>
+} else { 
+    <p class="alert alert-info">
+        No instant messengers found.
+    </p>
+}
+
+<p>
+    <a href="@Url.Action("Create", "InstantMessenger", new { contactId = @Model.Id })">Add Instant Messenger</a>
+</p>

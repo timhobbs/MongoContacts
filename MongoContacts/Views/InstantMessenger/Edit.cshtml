@@ -1,7 +1,7 @@
-﻿@model EmailModel
+﻿@model InstantMessengerModel
 
 @{
-    ViewBag.Title = "Edit Email";
+    ViewBag.Title = "Edit Instant Messenger";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
@@ -17,5 +17,5 @@
     @Html.HiddenFor(model => model.ContactId)
     @Html.HiddenFor(model => model.Id)
     @Html.EditorForModel()
-    <button class="btn btn-primary">Update Email</button>
+    <button class="btn btn-primary">Update Instant Messenger</button>
 }

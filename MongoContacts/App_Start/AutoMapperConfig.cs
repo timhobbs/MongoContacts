@@ -17,8 +17,8 @@ namespace MongoContacts.App_Start {
             Mapper.CreateMap<MongoContacts.Domain.InstantMessenger, MongoContacts.Models.InstantMessengerModel>();
             Mapper.CreateMap<MongoContacts.Models.InstantMessengerModel, MongoContacts.Domain.InstantMessenger>();
 
-            Mapper.CreateMap<MongoContacts.Domain.Phone, MongoContacts.Models.PhoneModel>();
-            Mapper.CreateMap<MongoContacts.Models.PhoneModel, MongoContacts.Domain.Phone>();
+            Mapper.CreateMap<MongoContacts.Domain.PhoneNumber, MongoContacts.Models.PhoneNumberModel>();
+            Mapper.CreateMap<MongoContacts.Models.PhoneNumberModel, MongoContacts.Domain.PhoneNumber>();
 
             Mapper.CreateMap<MongoContacts.Domain.Website, MongoContacts.Models.WebsiteModel>();
             Mapper.CreateMap<MongoContacts.Models.WebsiteModel, MongoContacts.Domain.Website>();

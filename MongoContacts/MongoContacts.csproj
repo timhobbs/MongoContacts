@@ -122,6 +122,8 @@
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\ModelBinderConfig.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\PhoneNumberController.cs" />
+    <Compile Include="Controllers\InstantMessengerController.cs" />
     <Compile Include="Controllers\WebsiteController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="DataAccess\MongoHelper.cs" />
@@ -136,7 +138,7 @@
     <Compile Include="Domain\InstantMessenger.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Domain\Phone.cs">
+    <Compile Include="Domain\PhoneNumber.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Domain\Website.cs">
@@ -154,10 +156,12 @@
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\InstantMessengerModel.cs" />
     <Compile Include="Models\MongoModel.cs" />
-    <Compile Include="Models\PhoneModel.cs" />
+    <Compile Include="Models\PhoneNumberModel.cs" />
     <Compile Include="Models\WebsiteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContactService.cs" />
+    <Compile Include="Services\PhoneNumberService.cs" />
+    <Compile Include="Services\InstantMessengerService.cs" />
     <Compile Include="Services\WebsiteService.cs" />
     <Compile Include="Services\EmailService.cs" />
   </ItemGroup>
@@ -205,6 +209,13 @@
     <Content Include="Views\Website\Index.cshtml" />
     <Content Include="Views\Website\Create.cshtml" />
     <Content Include="Views\Website\Edit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Object.cshtml" />
+    <Content Include="Views\InstantMessenger\Create.cshtml" />
+    <Content Include="Views\InstantMessenger\Edit.cshtml" />
+    <Content Include="Views\InstantMessenger\Index.cshtml" />
+    <Content Include="Views\PhoneNumber\Create.cshtml" />
+    <Content Include="Views\PhoneNumber\Edit.cshtml" />
+    <Content Include="Views\PhoneNumber\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

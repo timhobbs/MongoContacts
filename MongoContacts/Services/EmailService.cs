@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MongoContacts.DataAccess;
 using MongoContacts.Domain;
 using MongoDB.Bson;
@@ -10,8 +8,8 @@ using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
 
 namespace MongoContacts.Services {
-    public class EmailService {
 
+    public class EmailService {
         private readonly MongoHelper<Contact> contacts;
 
         public EmailService() {
@@ -55,6 +53,7 @@ namespace MongoContacts.Services {
                 throw new MongoException("Unable to update object");
             }
         }
+
         public void RemoveContactEmail(ObjectId contactId, ObjectId emailId) {
             var query = Query<Contact>.EQ(c => c.Id, contactId);
             var contact = contacts.Collection.AsQueryable<Contact>().Where(c => c.Id == contactId).First();

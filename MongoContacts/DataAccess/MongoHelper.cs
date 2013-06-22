@@ -11,8 +11,9 @@ namespace MongoContacts.DataAccess {
         public MongoCollection<T> Collection { get; private set; }
 
         public MongoHelper() {
-            var conn = new MongoConnectionStringBuilder(
-                ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString);
+            var connString = ConfigurationManager.AppSettings["MONGOLAB_URI"] ??
+                ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString;
+            var conn = new MongoConnectionStringBuilder(connString);
 
             var server = MongoServer.Create(conn);
             var db = server.GetDatabase(conn.DatabaseName);

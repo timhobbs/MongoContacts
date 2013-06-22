@@ -15,5 +15,5 @@ Release notes
 -------------
 The initial release is pretty basic: a contact, email addresses and websites. I have plans to expand to allow phone numbers, IM accounts and grouping (tags), but I have not yet implemented. I probably will depending on if real work gets in the way or not. This *IS* just a demo project - so it may die a horrible death.
 
-***2013.06.21
-Added phone number and IM support
+### 2013.06.21
+- Added phone number and IM support

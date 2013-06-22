@@ -11,12 +11,22 @@ namespace MongoContacts.DataAccess {
         public MongoCollection<T> Collection { get; private set; }
 
         public MongoHelper() {
-            var connString = ConfigurationManager.AppSettings["MONGOLAB_URI"] ??
-                ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString;
-            var conn = new MongoConnectionStringBuilder(connString);
+            MongoServer server;
+            MongoDatabase db;
+            var connString = ConfigurationManager.AppSettings["MONGOLAB_URI"];
 
-            var server = MongoServer.Create(conn);
-            var db = server.GetDatabase(conn.DatabaseName);
+            if (connString != null) {
+                var url = new MongoUrl(connString);
+                var client = new MongoClient(url);
+                server = client.GetServer();
+                db = server.GetDatabase(url.DatabaseName);
+            } else {
+                connString = ConfigurationManager.ConnectionStrings["MongoDB"].ConnectionString;
+                var conn = new MongoConnectionStringBuilder(connString);
+                server = MongoServer.Create(conn);
+                db = server.GetDatabase(conn.DatabaseName);
+            }
+
             Collection = db.GetCollection<T>(typeof(T).Name);
         }
     }
